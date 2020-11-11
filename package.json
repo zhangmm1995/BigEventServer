@@ -1,0 +1,28 @@
+{
+  "name": "BigEventServer",
+  "version": "1.0.0",
+  "description": "node.js配置服务器接口",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangmm1995/BigEventServer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangmm1995/BigEventServer/issues"
+  },
+  "homepage": "https://github.com/zhangmm1995/BigEventServer#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1"
+  }
+}
