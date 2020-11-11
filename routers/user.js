@@ -46,5 +46,47 @@ router.post('/userinfo', async (req, res) => {
   }
 });
 
+// 重置密码接口
+router.post('/updatepwd', async (req, res) => {
+  // 验证新旧密码是否相同
+  if (req.body.oldPwd == req.body.newPwd) {
+    return res.json({
+      status: 1,
+      message: '新旧密码不能相同',
+    });
+  }
+  // 判断原密码是否正确
+  let oldPwd = await database(
+    'select * from user where username=? and password=?',
+    [req.user.username, utility.md5(req.body.oldPwd)]
+  );
+  if (!oldPwd || oldPwd.length == 0) {
+    return res.json({
+      status: 1,
+      message: '原密码不正确',
+    });
+  }
+
+  // 更新密码
+  let obj = {
+    password: utility.md5(req.body.newPwd),
+  };
+  let value = await database('update user set? where username=?', [
+    obj,
+    req.user.username,
+  ]);
+  if (value && value.affectedRows > 0) {
+    res.json({
+      status: 0,
+      message: '更新密码成功！',
+    });
+  } else {
+    res.json({
+      status: 1,
+      message: '更新密码失败！',
+    });
+  }
+});
+
 // 导出路由
 module.exports = router;
