@@ -9,7 +9,7 @@ const database = require('../database');
 //配置上传文件的存放目录,使用绝对路径
 const upload = multer({ dest: path.join(__dirname, '../upload') });
 
-// 发布文章j接口
+// 发布文章接口
 router.post('/article/add', upload.single('cover_img'), async (req, res) => {
   let obj = req.body;
   obj.cover_img = req.file.filename;
@@ -28,6 +28,8 @@ router.post('/article/add', upload.single('cover_img'), async (req, res) => {
     });
   }
 });
+
+
 
 // 导出路由
 module.exports = router;
