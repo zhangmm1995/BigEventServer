@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 // 引用数据库
 const database = require('../database');
+const { route } = require('./login');
 
 // 获取用户的基本信息接口
 router.get('/userinfo', async (req, res) => {
@@ -84,6 +85,28 @@ router.post('/updatepwd', async (req, res) => {
     res.json({
       status: 1,
       message: '更新密码失败！',
+    });
+  }
+});
+
+// 更新头像接口
+router.post('/update/avatar', async (req, res) => {
+  let avatar = {
+    user_pic: req.body.avatar,
+  };
+  let value = await database('update user set? where id=? ', [
+    avatar,
+    req.user.id,
+  ]);
+  if (value && value.affectedRows > 0) {
+    res.json({
+      status: 0,
+      message: '更新头像成功！',
+    });
+  } else {
+    res.json({
+      status: 1,
+      message: '更新头像失败！',
     });
   }
 });
