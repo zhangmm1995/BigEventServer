@@ -37,3 +37,6 @@ app.use('/my', require(path.join(__dirname, 'routers', 'user')));
 
 // 使用文章分类管理路由
 app.use('/my', require(path.join(__dirname, 'routers', 'category')));
+
+// 使用文章管理路由
+app.use('/my', require(path.join(__dirname, 'routers', 'article')));
