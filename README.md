@@ -1,2 +1,2 @@
-# demo
-测试专用
+# BigEventServer
+node.js配置服务器接口
