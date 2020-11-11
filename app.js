@@ -34,3 +34,6 @@ app.use('/api', require(path.join(__dirname, 'routers', 'login')));
 
 // 使用个人中心路由
 app.use('/my', require(path.join(__dirname, 'routers', 'user')));
+
+// 使用文章分类管理路由
+app.use('/my', require(path.join(__dirname, 'routers', 'category')));
